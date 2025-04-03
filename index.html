@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Luis Ernesto Urrutia Garcia">
+    <meta name="email" content="ernesto.urrutia.garcia@outlook.com">
+    <script src="https://kit.fontawesome.com/c982b33cb5.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Deep Control EU</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Rubik:ital,wght@0,300..900;1,300..900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+        body {
+            margin: 0;
+
+            font-family: "Rubik", sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            background-color: white;
+        }
+
+        header {
+            width: 100%;
+            height: 50px;
+            background-color: #333333;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            z-index: 1;
+        }
+header img{
+    height: 60%;
+    margin-left: 10px;
+}
+        nav a {
+
+            align-items: center;
+            margin-left: 30px;
+            text-decoration: none;
+            font-size: 0.8em;
+            color: white;
+            border-bottom: 2px solid transparent;
+            transition: border, padding 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+
+        nav a i {
+            margin-right: 5px;
+        }
+
+        nav a:hover {
+            border-bottom: 2px solid white;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        nav {
+            display: flex;
+            width: auto;
+            margin-right: 30px;
+        }
+
+        nav a:hover i {
+            animation: temblor 1s infinite ease-in-out;
+        }
+
+        main {
+
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 50px);
+
+            position: fixed;
+            top: 50px;
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+
+        }
+
+        @keyframes temblor {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            10% {
+                transform: rotate(5deg);
+            }
+
+            20% {
+                transform: rotate(-5deg);
+            }
+
+            30% {
+                transform: rotate(10deg);
+            }
+
+            40% {
+                transform: rotate(-10deg);
+            }
+
+            50% {
+                transform: rotate(15deg);
+            }
+
+            60% {
+                transform: rotate(-15deg);
+            }
+
+            70% {
+                transform: rotate(10deg);
+            }
+
+            80% {
+                transform: rotate(-5deg);
+            }
+
+            90% {
+                transform: rotate(5deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        main section {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+
+        }
+
+        #sec_inicio {
+            position: relative;
+            background-color: rgb(255, 255, 255);
+        }
+
+        #img_fondo {
+            height: 100%;
+
+
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+
+        }
+
+        #sec_inicio article {
+            position: relative;
+            height: 100%;
+            width: 50%;
+        }
+
+        #sec_inicio article:nth-child(2) {
+            position: absolute;
+
+            right: 0%;
+            top: 0%;
+
+
+
+
+        }
+
+        #sec_inicio article:nth-child(2) h1 {
+            margin: 0;
+            margin-top: 15vh;
+            font-family: "Titillium Web", sans-serif;
+            font-size: 5em;
+            font-weight: 600;
+            font-style: normal;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        #sec_inicio article:nth-child(2) h1 span:first-child {
+            text-align: left;
+            margin: 0;
+            padding: 0;
+        }
+
+        #sec_inicio article:nth-child(2) h1 span:nth-child(2) {
+
+            margin: 0;
+            margin-left: 2.5em;
+            padding: 0;
+        }
+
+        #sec_inicio article:nth-child(2) p {
+            text-align: justify;
+            max-width: 600px;
+            text-shadow: 1px 1px 10px rgb(0, 0, 0);
+        }
+
+        .img_burbujas {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+
+
+
+
+
+        }
+
+        .img_burbujas img:hover {
+
+            border: 8px solid black;
+            opacity: 1;
+            transform: scale(1.1) rotate(15deg);
+
+        }
+
+        .img_burbujas img {
+            border: 8px solid transparent;
+
+            z-index: 10;
+            width: 80px;
+            aspect-ratio: 1 / 1;
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.975);
+            opacity: 0.9;
+            border-radius: 50%;
+            filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 1));
+        }
+
+
+
+        .img_burbujas div span {
+            max-width: 0;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            margin-left: 1px;
+            font-size: 1em;
+            background-color: #000000;
+            color: rgb(255, 255, 255);
+            border-radius: 10px;
+            padding: 0px;
+            white-space: nowrap;
+        }
+
+        .img_burbujas img:hover+span {
+            max-width: 1000px;
+            padding: 10px;
+        }
+
+        .img_burbujas div {
+            display: flex;
+            position: absolute;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+        }
+
+        .img_burbujas div:nth-child(1) {
+            top: 5%;
+            left: 70%;
+            animation: moverInicio 15s 0s infinite ease-in-out;
+        }
+
+        .img_burbujas div:nth-child(2) {
+            top: 15%;
+            left: 90%;
+            animation: moverInicio 15s 1s infinite ease-in-out;
+        }
+
+        .img_burbujas div:nth-child(3) {
+            top: 10%;
+            left: 20%;
+            animation: moverInicio 15s 3s infinite ease-in-out;
+        }
+
+        .img_burbujas div:nth-child(4) {
+            top: 35%;
+            left: 50%;
+            animation: moverInicio 15s 4s infinite ease-in-out;
+        }
+
+        .img_burbujas div:nth-child(5) {
+            top: 75%;
+            left: 90%;
+            animation: moverInicio 15s 5s infinite ease-in-out;
+        }
+
+        .img_burbujas div:nth-child(6) {
+            top: 65%;
+            left: 50%;
+            animation: moverInicio 15s 6s infinite ease-in-out;
+        }
+
+        .img_burbujas div:nth-child(7) {
+            top: 75%;
+            left: 10%;
+            animation: moverInicio 15s 7s infinite ease-in-out;
+        }
+
+        .img_burbujas div:nth-child(8) {
+            top: 85%;
+            left: 60%;
+            animation: moverInicio 15s 8s infinite ease-in-out;
+        }
+
+        .img_burbujas div:nth-child(9) {
+            top: 50%;
+            left: 80%;
+            animation: moverInicio 15s 10s infinite ease-in-out;
+        }
+
+        @keyframes moverInicio {
+
+            0% {
+                transform: translate(0px, 0px);
+            }
+
+            25% {
+                transform: translate(10px, 10px);
+            }
+
+            50% {
+                transform: translate(-10px, 20px);
+            }
+
+            75% {
+                transform: translate(-20px, 10px);
+            }
+
+            100% {
+                transform: translate(0px, 0px);
+            }
+        }
+
+        #barras {
+            display: none;
+        }
+
+
+
+        #sec_inicio {
+            display: none;
+        }
+
+
+        #sec_funcionalidades {
+            display: none;
+            overflow-y: scroll;
+
+            color: rgb(0, 0, 0);
+            background-color: aliceblue;
+        }
+
+        #sec_funcionalidades h3 {
+
+            font-family: "Titillium Web", sans-serif;
+            font-weight: 200;
+            font-style: normal;
+            font-size: 4em;
+            margin: 0;
+
+
+        }
+
+        #sec_funcionalidades article {
+            position: relative;
+            margin-top: 200px;
+            height: 50%;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+
+
+        .sec_box {
+            width: 45%;
+            height: 100%;
+            padding: 20px;
+        }
+
+
+        .box {
+            position: relative;
+            opacity: 0;
+            top: -20px;
+            transition: all 1s ease-out;
+            width: 48%;
+
+            border-radius: 20px;
+            margin: 0;
+            background-color: #000000;
+
+
+        }
+
+
+        .box.visible {
+            opacity: 1;
+
+            right: 0;
+            top: 0px;
+        }
+
+
+
+
+
+        #linea_cro {
+            position: fixed;
+            top: 0;
+            width: 10px;
+            height: 100%;
+            background-color: #333333;
+            left: 50%;
+            transform: translate(-50%);
+        }
+
+        #indicador {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%);
+            border: 10px solid rgb(141, 3, 60);
+            width: 30px;
+            height: 30px;
+            margin: 0;
+            border-radius: 50%;
+
+
+            background-color: #ffffff;
+        }
+
+        .sec_box p {
+            position: relative;
+            opacity: 0;
+            transition: all 1s ease-out;
+            top: 20px;
+            text-align: justify;
+        }
+
+        .sec_box p.visible {
+            opacity: 1;
+            top: 0;
+        }
+
+        @media only screen and (max-device-width: 800px) {
+            #barras {
+                display: flex;
+                position: absolute;
+                right: 20px;
+                font-size: 1.5em;
+                border: 5px solid var(--color-iconos);
+                color: white;
+
+                border-radius: 10px;
+                padding: 10px;
+            }
+
+            #barras:hover {
+                color: black;
+                background-color: white;
+            }
+
+            #barras:hover+nav {
+                right: -40px;
+            }
+
+            nav {
+                position: fixed;
+                top: 50px;
+                right: -400px;
+
+
+                background-color: rgb(63, 63, 63);
+                width: 200px;
+                height: calc(100vh - 50px);
+
+                display: flex;
+                flex-direction: column;
+                transition: all 0.3s ease-in-out;
+                align-items: center;
+            }
+
+            nav a {
+                margin: 0;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 10px;
+                padding-bottom: 10px;
+                margin-top: 10px;
+                font-size: 1em;
+                border-bottom: 1px solid gray;
+
+            }
+
+            #sec_inicio article:first-child .img_burbujas {
+                display: none;
+            }
+
+            #sec_inicio article:nth-child(2) {
+                width: 100vw;
+                height: calc(50px - 100vh);
+            }
+
+            #sec_inicio article:nth-child(2) h1 {
+                font-size: 3em;
+                margin-top: 10px;
+                color: white;
+            }
+
+            #sec_inicio article:nth-child(2) p {
+                padding: 20px;
+                color: white;
+            }
+
+            #sec_funcionalidades h3 {
+                font-size: 2em;
+            }
+        }
+
+        #sec_funcionalidades footer {
+            margin-top: 200px;
+            width: 80%;
+            margin: 5% 10% 0% 10%;
+            height: 100px;
+            color: white;
+            background-color: #333333;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10 !important;
+            position: relative;
+        }
+
+        #sec_funcionalidades footer p {
+            margin: 10px;
+        }
+
+        .figura_fondo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 70%;
+            height: 100%;
+            
+            clip-path: polygon(74% 0, 96% 37%, 86% 80%, 43% 100%, 0 100%, 0 0);
+            
+        }
+        .figura_fondo:first-child {
+            background-color: antiquewhite;
+            animation: figura_movil 20s infinite 1s;
+        }
+        .figura_fondo:nth-child(2) {
+            background-color:rgb(220, 225, 255);
+            animation: figura_movil 20s infinite 4s;
+        }
+        @keyframes figura_movil {
+            0% {
+                clip-path: polygon(74% 0, 96% 37%, 86% 80%, 43% 100%, 0 100%, 0 0);
+            }
+
+            10% {
+                clip-path: polygon(74% 0, 83% 36%, 94% 86%, 43% 100%, 0 100%, 0 0);
+            }
+
+            25% {
+                clip-path: polygon(74% 0, 63% 42%, 48% 73%, 100% 100%, 0 100%, 0 0);
+            }
+
+            50% {
+                clip-path: polygon(74% 0, 63% 42%, 94% 86%, 43% 100%, 0 100%, 0 0);
+            }
+
+            75% {
+                clip-path: polygon(100% 0, 37% 45%, 36% 52%, 100% 100%, 0 100%, 0 0);
+            }
+
+            90% {
+                clip-path: polygon(74% 0, 63% 42%, 100% 62%, 43% 100%, 0 100%, 0 0);
+            }
+
+            100% {
+                clip-path: polygon(74% 0, 96% 37%, 86% 80%, 43% 100%, 0 100%, 0 0);
+            }
+        }
+        #sec_descarga{
+            width: 100%;
+            height: 100%;
+            
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        #sec_descarga article{
+            width: 40%;
+            height: 100%;
+            max-height: 500px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 1px rgb(218, 218, 218);
+            background-color: rgb(250, 253, 255);
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="recursos/imagenes/logov2.png" alt="">
+        <i id="barras" class="fa-solid fa-bars"></i>
+
+        <nav>
+
+            <a href="#"><i class="fa-solid fa-house"></i>Inicio</a>
+            <a href="#"><i class="fa-solid fa-gear"></i>Funcionalidades</a>
+            <a href="#"><i class="fa-solid fa-download"></i>Descarga</a>
+            <a href="#"><i class="fa-solid fa-wrench"></i>Manual o guía</a>
+            <a href="#"><i class="fa-solid fa-shield-halved"></i>Seguridad y privacidad</a>
+            <a href="#"><i class="fa-solid fa-address-book"></i>Contacto</a>
+        </nav>
+    </header>
+    <main>
+        <section id="sec_inicio" class="seleccionada">
+
+            <article>
+
+                <div class="img_burbujas">
+                    <div><img src="recursos/imagenes/img_apagar.png" alt="" srcset=""><span>Puedes apagar tus equipos de
+                            forma remota</span></div>
+                    <div><img src="recursos/imagenes/img_reiniciar.png" alt="" srcset=""><span>Puedes reiniciar tus
+                            equipos de forma remota</span></div>
+                    <div><img src="recursos/imagenes/img_fondo_pantalla.png" alt="" srcset=""><span>Puedescambiar el
+                            fondo a tus equipos de forma remota</span></div>
+                    <div><img src="recursos/imagenes/img_bloquear_pantalla.png" alt="" srcset=""><span>Puedes bloquear
+                            tus equipos de forma remota</span></div>
+                    <div><img src="recursos/imagenes/img_enviar_archivo.png" alt="" srcset=""><span>Puedes enviar
+                            archivos tus equipos de forma remota</span></div>
+                    <div><img src="recursos/imagenes/img_limpiar_carpetas.png" alt="" srcset=""><span>Puedes limpiar las
+                            carpetas importantes de tus equipos de forma remota</span></div>
+                    <div><img src="recursos/imagenes/img_limpiar_papelera.png" alt="" srcset=""><span>Puedes limpiar
+                            papeleras de tus equipos de forma remota</span></div>
+                    <div><img src="recursos/imagenes/img_mensaje.png" alt="" srcset=""><span>Puedes mandar un mensaje
+                            tus equipos de forma remota</span></div>
+                    <div><img src="recursos/imagenes/img_modificar_volumen.png" alt="" srcset=""><span>Puedes configurar
+                            el volumen tus equipos de forma remota</span></div>
+                </div>
+                <img id="img_fondo" src="recursos/imagenes/fondo_inicio_sec.png" alt="" srcset="">
+            </article>
+            <article>
+
+                <h1>
+                    <span>¿Que es Deep</span>
+                    <span>Control EU?</span>
+                </h1>
+
+                <p>DeepControl EU es un software desarrollado en C# por Luis Ernesto Urrutia G. que permite el control remoto de múltiples máquinas desde un servidor. Está orientado a administradores de sistemas, empresas, instituciones educativas y cualquier usuario que necesite gestionar de forma centralizada varios equipos, facilitando tareas de monitoreo, soporte técnico y administración remota de manera eficiente y segura.</p>
+            </article>
+
+
+        </section>
+
+        <section id="sec_funcionalidades">
+            <div class="figura_fondo"></div>
+            <div class="figura_fondo"></div>
+            
+            <div id="linea_cro"></div>
+            <article>
+                <div id="indicador"></div>
+                <div class="sec_box">
+                    <h3>Apagar y Reiniciar</h3>
+                    <p>
+                        Optimiza la gestión de tus dispositivos con DeepControl EU. Nuestra plataforma te permite apagar
+                        o reiniciar computadoras de forma remota, ya sea de manera individual, por selección múltiple,
+                        por grupos seleccionados o en toda la red. Con control preciso y una gestión centralizada,
+                        puedes reducir el consumo de energía y mejorar la administración de equipos de trabajo, todo
+                        desde un solo lugar. Ideal para administradores de TI, centros de trabajo, laboratorios y
+                        entornos empresariales que requieren control total sobre sus dispositivos.</p>
+                </div>
+                <video class="box" controls autoplay muted loop src="recursos/videos/ApagarReiniciar.mp4"></video>
+            </article>
+
+            <article>
+                <div id="indicador"></div>
+                <video class="box" controls autoplay muted loop src="recursos/videos/CambiarFondo_f.mp4"></video>
+                <div class="sec_box">
+                    <h3>Cambiar fondo</h3>
+                    <p>Con DeepControl EU, cambia el fondo de pantalla de cualquier equipo conectado de forma remota y
+                        en segundos. Selecciona y envía la imagen desde el servidor para aplicarla al instante, con
+                        control total sobre una computadora, varias o todas las visibles en la lista. Ideal para
+                        entornos corporativos, educativos o de soporte técnico, simplificando la personalización de
+                        equipos sin necesidad de acceso físico y garantizando una gestión rápida y efectiva.</p>
+                </div>
+
+            </article>
+
+            <article>
+                <div id="indicador"></div>
+                <div class="sec_box">
+                    <h3>Limpiar carpetas y papelera</h3>
+                    <p>Con DeepControl EU, puedes eliminar archivos de forma remota de carpetas como Escritorio,
+                        Documentos, Descargas, Imágenes y Videos, además de vaciar la Papelera de Reciclaje. Esta
+                        funcionalidad te permite gestionar y limpiar equipos de manera eficiente, pero ten en cuenta que
+                        la eliminación es permanente y no se podrá recuperar, por lo que debes asegurarte de que los
+                        archivos a eliminar no sean necesarios. Ideal para mantener los equipos libres de archivos
+                        innecesarios y optimizar el espacio de almacenamiento.</p>
+                </div>
+                <video class="box" controls autoplay muted loop
+                    src="recursos/videos/LimpiarCarpetasPapelera_f.mp4"></video>
+            </article>
+
+            <article>
+                <div id="indicador"></div>
+                <video class="box" controls autoplay muted loop src="recursos/videos/BloquearDesbloquear_f.mp4"></video>
+                <div class="sec_box">
+                    <h3>Bloquear y desbloquear</h3>
+                    <p>Con DeepControl EU, bloquea y desbloquea remotamente la pantalla de cualquier equipo, impidiendo
+                        el uso del mouse y el teclado. Al activarse, el usuario verá una pantalla con el mensaje
+                        "Bloqueado", imposibilitando cualquier interacción hasta que el equipo sea desbloqueado. Esta
+                        función es ideal para restringir el acceso a dispositivos no autorizados, mejorar la seguridad y
+                        mantener el control total sobre los equipos conectados.</p>
+                </div>
+            </article>
+
+            <article>
+                <div id="indicador"></div>
+                <div class="sec_box">
+                    <h3>Enviar credenciales y arhivos</h3>
+                    <p>Con DeepControl EU, ejecuta CMD en modo administrador de forma remota enviando las credenciales
+                        necesarias. Además, puedes enviar archivos a las computadoras conectadas, seleccionándolos desde
+                        el servidor y asegurando que lleguen directamente al Escritorio de las máquinas seleccionadas.
+                        Esta funcionalidad facilita la gestión remota de equipos, permitiendo ejecutar comandos
+                        avanzados y distribuir archivos de manera eficiente y segura.</p>
+                </div>
+                <video class="box" controls autoplay muted loop src="recursos/videos/CredencialesArchivo.mp4"></video>
+            </article>
+
+            <article>
+                <div id="indicador"></div>
+                <video class="box" controls autoplay muted loop src="recursos/videos/ControlarVolumen.mp4"></video>
+                <div class="sec_box">
+                    <h3>Controlar volumen</h3>
+                    <p>Con DeepControl EU, ajusta el volumen de cualquier equipo de forma remota en tiempo real. Puedes
+                        subir, bajar o silenciar el audio de una o varias computadoras conectadas sin necesidad de
+                        acceso físico. Esta funcionalidad es ideal para mantener el control en entornos de trabajo,
+                        educativos o de soporte técnico, asegurando una gestión eficiente del sonido en los dispositivos
+                        administrados.</p>
+                </div>
+            </article>
+
+            <article>
+                <div id="indicador"></div>
+                <div class="sec_box">
+                    <h3>Control remoto del equipo</h3>
+                    <p>Con DeepControl EU, toma el control total de cualquier equipo de forma remota, permitiéndote
+                        visualizar la pantalla y manejar el mouse y teclado en tiempo real. Accede con fluidez, utiliza
+                        funciones esenciales y atajos básicos para gestionar el dispositivo como si estuvieras frente a
+                        él. Ideal para soporte técnico, administración de sistemas y asistencia remota sin
+                        interrupciones.</p>
+                </div>
+                <video class="box" controls autoplay muted loop src="recursos/videos/Controlar.mp4"></video>
+            </article>
+            <footer>
+                <p>DeepControl EU también recopila y muestra información detallada de cada equipo conectado, incluyendo
+                    estación, grupo, usuario, inventario, direcciones IP y MAC (Ethernet y WiFi), IP pública, RAM,
+                    sistema operativo, procesador, discos duros, marca, modelo y otros datos relevantes. Además, permite
+                    visualizar en tiempo real la pantalla de todos los equipos en un segmento específico y organizar las
+                    salas en diferentes grupos para una gestión más eficiente.</p>
+            </footer>
+
+
+        </section>
+
+        <section id="sec_descarga">
+            <article></article>
+            <article></article>
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+    <script>
+        const cards = document.querySelectorAll('.box');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                const video = entry.target;
+
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    if (video) {
+                        video.currentTime = 0;
+                        video.play();
+                    }
+                } else {
+                    entry.target.classList.remove('visible');
+                    if (video) video.pause();
+                }
+            });
+        }, {
+            threshold: 0.9,
+        });
+
+        cards.forEach(card => observer.observe(card));
+
+        const paragraphs = document.querySelectorAll('.sec_box p');
+        const paragraphObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                entry.target.classList.toggle('visible', entry.isIntersecting);
+            });
+        }, {
+            threshold: 0.9,
+        });
+
+        // Aplicar los observadores a los elementos correspondientes
+
+        paragraphs.forEach(p => paragraphObserver.observe(p));
+
+
+    </script>
+</body>
+
+</html>

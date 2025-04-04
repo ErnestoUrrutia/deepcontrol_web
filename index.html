@@ -1907,18 +1907,18 @@
         });
 
         function mostrarSeccion(id) {
-            // Ocultamos todas las secciones
+            
             const secciones = document.querySelectorAll('.seccion');
             secciones.forEach(seccion => {
                 seccion.style.display = 'none';
             });
 
-            // Mostramos solo la sección correspondiente
+            
             const seccionMostrar = document.getElementById(id);
             seccionMostrar.style.display = 'flex';
         }
 
-        // Por defecto, mostrar la sección de inicio
+       
         window.onload = function () {
             mostrarSeccion('sec_inicio');
         };

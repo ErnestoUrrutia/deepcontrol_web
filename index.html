@@ -33,11 +33,13 @@
             position: fixed;
             z-index: 1;
         }
-header img{
-    height: 60%;
-    margin-left: 10px;
-}
-        nav a {
+
+        header img {
+            height: 60%;
+            margin-left: 10px;
+        }
+
+        header  nav a {
 
             align-items: center;
             margin-left: 30px;
@@ -48,23 +50,23 @@ header img{
             transition: border, padding 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
 
-        nav a i {
+        header nav a i {
             margin-right: 5px;
         }
 
-        nav a:hover {
+        header nav a:hover {
             border-bottom: 2px solid white;
             padding-left: 10px;
             padding-right: 10px;
         }
 
-        nav {
+        header nav {
             display: flex;
             width: auto;
             margin-right: 30px;
         }
 
-        nav a:hover i {
+        header nav a:hover i {
             animation: temblor 1s infinite ease-in-out;
         }
 
@@ -548,18 +550,21 @@ header img{
             left: 0;
             width: 70%;
             height: 100%;
-            
+
             clip-path: polygon(74% 0, 96% 37%, 86% 80%, 43% 100%, 0 100%, 0 0);
-            
+
         }
+
         .figura_fondo:first-child {
             background-color: antiquewhite;
             animation: figura_movil 20s infinite 1s;
         }
+
         .figura_fondo:nth-child(2) {
-            background-color:rgb(220, 225, 255);
+            background-color: rgb(220, 225, 255);
             animation: figura_movil 20s infinite 4s;
         }
+
         @keyframes figura_movil {
             0% {
                 clip-path: polygon(74% 0, 96% 37%, 86% 80%, 43% 100%, 0 100%, 0 0);
@@ -589,22 +594,137 @@ header img{
                 clip-path: polygon(74% 0, 96% 37%, 86% 80%, 43% 100%, 0 100%, 0 0);
             }
         }
-        #sec_descarga{
+
+        #sec_descarga {
             width: 100%;
             height: 100%;
-            
+            font-family: "Titillium Web", sans-serif;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-evenly;
             align-items: center;
         }
-        #sec_descarga article{
+
+        #sec_descarga article {
+            position: relative;
             width: 40%;
             height: 100%;
             max-height: 500px;
             border-radius: 10px;
             box-shadow: 0px 0px 10px 1px rgb(218, 218, 218);
             background-color: rgb(250, 253, 255);
+            padding: 30px;
+        }
 
+        #sec_descarga article img {
+            width: 100%;
+
+        }
+
+        #sec_descarga article h3 {
+
+            font-size: 2em;
+        }
+
+        #sec_descarga article p {
+            text-align: justify;
+        }
+
+        #sec_descarga article button i {
+            margin-right: 10px;
+
+        }
+
+        #sec_descarga article button:hover i {
+            animation: temblor 1s infinite ease-in-out;
+        }
+
+        #sec_descarga article button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            border: none;
+            background-color: rgb(31, 22, 160);
+            color: white;
+            font-weight: bold;
+            font-size: 1em;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.445);
+            transition: all 0.3s ease-in-out;
+        }
+
+        #sec_descarga article button:hover {
+            background-color: green;
+        }
+
+        #sec_descarga {
+            display: none;
+        }
+
+        /*****************/
+        #sec_manual {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #sec_manual nav {
+            width: 250px;
+            height: 100%;
+            box-shadow: 0px 0px 10px 1px black;
+            margin: 0;
+            color: #000000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #sec_manual aside {
+            width: calc(100% - 250px);
+            height: 100%;
+            padding: 10px;
+            overflow-y: scroll;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .step,
+        .notice {
+            margin-bottom: 15px;
+            text-align: justify;
+            max-width: 95%;
+        }
+
+        #sec_manual article {
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        #sec_manual aside img {
+            max-width:700px;
+            float: right;
+            border: 1px solid black;
+            margin: 10px;
+        }
+
+        h2,
+        h3 {
+            text-align: center;
+
+        }
+
+
+        strong {
+            color: #a70117;
+            margin: 15px;
+        }
+
+        .notice {
+            background: #ffeeba;
+            padding: 10px;
+            border-left: 5px solid #ff9800;
         }
     </style>
 </head>
@@ -658,7 +778,11 @@ header img{
                     <span>Control EU?</span>
                 </h1>
 
-                <p>DeepControl EU es un software desarrollado en C# por Luis Ernesto Urrutia G. que permite el control remoto de múltiples máquinas desde un servidor. Está orientado a administradores de sistemas, empresas, instituciones educativas y cualquier usuario que necesite gestionar de forma centralizada varios equipos, facilitando tareas de monitoreo, soporte técnico y administración remota de manera eficiente y segura.</p>
+                <p>DeepControl EU es un software desarrollado en C# por Luis Ernesto Urrutia G. que permite el control
+                    remoto de múltiples máquinas desde un servidor. Está orientado a administradores de sistemas,
+                    empresas, instituciones educativas y cualquier usuario que necesite gestionar de forma centralizada
+                    varios equipos, facilitando tareas de monitoreo, soporte técnico y administración remota de manera
+                    eficiente y segura.</p>
             </article>
 
 
@@ -667,7 +791,7 @@ header img{
         <section id="sec_funcionalidades">
             <div class="figura_fondo"></div>
             <div class="figura_fondo"></div>
-            
+
             <div id="linea_cro"></div>
             <article>
                 <div id="indicador"></div>
@@ -681,12 +805,12 @@ header img{
                         desde un solo lugar. Ideal para administradores de TI, centros de trabajo, laboratorios y
                         entornos empresariales que requieren control total sobre sus dispositivos.</p>
                 </div>
-                <video class="box" controls autoplay muted loop src="recursos/videos/ApagarReiniciar.mp4"></video>
+                <video class="box" controls autoplay muted loop src="recursos/videos/ApagarReiniciar_Comp.mp4"></video>
             </article>
 
             <article>
                 <div id="indicador"></div>
-                <video class="box" controls autoplay muted loop src="recursos/videos/CambiarFondo_f.mp4"></video>
+                <video class="box" controls autoplay muted loop src="recursos/videos/CambiarFondo_Comp.mp4"></video>
                 <div class="sec_box">
                     <h3>Cambiar fondo</h3>
                     <p>Con DeepControl EU, cambia el fondo de pantalla de cualquier equipo conectado de forma remota y
@@ -709,13 +833,12 @@ header img{
                         archivos a eliminar no sean necesarios. Ideal para mantener los equipos libres de archivos
                         innecesarios y optimizar el espacio de almacenamiento.</p>
                 </div>
-                <video class="box" controls autoplay muted loop
-                    src="recursos/videos/LimpiarCarpetasPapelera_f.mp4"></video>
+                <video class="box" controls autoplay muted loop  src="recursos/videos/LimpiarCarpetasPapelera_Comp.mp4"></video>
             </article>
 
             <article>
                 <div id="indicador"></div>
-                <video class="box" controls autoplay muted loop src="recursos/videos/BloquearDesbloquear_f.mp4"></video>
+                <video class="box" controls autoplay muted loop src="recursos/videos/BloquearDesbloquear_comp.mp4"></video>
                 <div class="sec_box">
                     <h3>Bloquear y desbloquear</h3>
                     <p>Con DeepControl EU, bloquea y desbloquea remotamente la pantalla de cualquier equipo, impidiendo
@@ -736,12 +859,12 @@ header img{
                         Esta funcionalidad facilita la gestión remota de equipos, permitiendo ejecutar comandos
                         avanzados y distribuir archivos de manera eficiente y segura.</p>
                 </div>
-                <video class="box" controls autoplay muted loop src="recursos/videos/CredencialesArchivo.mp4"></video>
+                <video class="box" controls autoplay muted loop src="recursos/videos/CredencialesArchivo_Comp.mp4"></video>
             </article>
 
             <article>
                 <div id="indicador"></div>
-                <video class="box" controls autoplay muted loop src="recursos/videos/ControlarVolumen.mp4"></video>
+                <video class="box" controls autoplay muted loop src="recursos/videos/ControlarVolumen_Comp.mp4"></video>
                 <div class="sec_box">
                     <h3>Controlar volumen</h3>
                     <p>Con DeepControl EU, ajusta el volumen de cualquier equipo de forma remota en tiempo real. Puedes
@@ -751,9 +874,18 @@ header img{
                         administrados.</p>
                 </div>
             </article>
-
             <article>
                 <div id="indicador"></div>
+                
+                <div class="sec_box">
+                    <h3>Control remoto del equipo</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio dolorum ea iusto repellat vero facere ipsam ducimus, molestiae sit veniam incidunt, error ullam quo quasi asperiores. Dolorum accusamus ipsum ratione!</p>
+                </div>
+                <video class="box" controls autoplay muted loop src="recursos/videos/EnviarMensaje_Comp.mp4"></video>
+            </article>
+            <article>
+                <div id="indicador"></div>
+                <video class="box" controls autoplay muted loop src="recursos/videos/Controlar_Comp.mp4"></video>
                 <div class="sec_box">
                     <h3>Control remoto del equipo</h3>
                     <p>Con DeepControl EU, toma el control total de cualquier equipo de forma remota, permitiéndote
@@ -762,8 +894,11 @@ header img{
                         él. Ideal para soporte técnico, administración de sistemas y asistencia remota sin
                         interrupciones.</p>
                 </div>
-                <video class="box" controls autoplay muted loop src="recursos/videos/Controlar.mp4"></video>
+                
             </article>
+
+
+
             <footer>
                 <p>DeepControl EU también recopila y muestra información detallada de cada equipo conectado, incluyendo
                     estación, grupo, usuario, inventario, direcciones IP y MAC (Ethernet y WiFi), IP pública, RAM,
@@ -776,8 +911,119 @@ header img{
         </section>
 
         <section id="sec_descarga">
-            <article></article>
-            <article></article>
+            <article>
+
+                <h3>Descarga DeepControl EU - Servidor</h3>
+                <img src="recursos/imagenes/red_server.png" alt="" srcset="">
+                <p>El servidor de DeepControl EU es la herramienta central para gestionar y controlar de forma remota
+                    los equipos cliente. Es una aplicación portable, por lo que no requiere instalación, solo ejecútala
+                    con privilegios de administrador para comenzar a administrar los dispositivos conectados.</p>
+                <button><i class="fa-solid fa-download"></i>Descargar DC EU Servidor - v2.0.4</button>
+
+            </article>
+            <article>
+                <h3>Descarga DeepControl EU - Semilla</h3>
+                <img src="recursos/imagenes/red_semilla.png" alt="" srcset="">
+                <p>La semilla de DeepControl EU es el módulo que debe instalarse en los equipos cliente para permitir su
+                    control y monitoreo remoto desde el servidor. Para su correcto funcionamiento, debe ejecutarse con
+                    privilegios de administrador y configurarse para establecer la conexión con el servidor principal.
+                </p>
+                <button><i class="fa-solid fa-download"></i>Descargar DC EU Semilla - v2.0.4</button>
+            </article>
+
+        </section>
+        <section id="sec_manual">
+            <nav>
+                <a href="">Hola</a>
+                <a href="">Hola</a>
+                <a href="">Hola</a>
+                
+            </nav>
+            <aside>
+                <article>
+                    <h2>Guía de Instalación - DeepControl EU (Semilla)</h2>
+                    <img src="recursos/imagenes/manual/instalador.png" alt="" srcset="">
+
+
+                    <div class="step"><strong>1. Organización:</strong> Ingrese el nombre de su organización para
+                        identificar el equipo dentro de la misma.</div>
+                    <div class="step"><strong>2. Dirección IP del Servidor:</strong> Introduzca la IP del servidor,
+                        asegurándose de que esté en el mismo segmento de red o superior.</div>
+                    <div class="step"><strong>3. Puerto de Comunicación:</strong> Especifique el puerto utilizado para
+                        la
+                        comunicación entre el cliente y el servidor.</div>
+                    <div class="step"><strong>4. Nombre del Equipo:</strong> Asigne un nombre al equipo para su
+                        identificación en el servidor central.</div>
+                    <div class="step"><strong>5. Grupo o Área:</strong> Indique el grupo o área a la que pertenece el
+                        equipo
+                        para facilitar su organización en el servidor.</div>
+                    <div class="step"><strong>6. Número de Inventario:</strong> Ingrese el identificador interno de la
+                        organización. Si no tiene uno, puede dejarlo como "N/A".</div>
+                    <div class="step"><strong>7. Términos y Condiciones:</strong> Se mostrará el acuerdo que debe
+                        aceptar
+                        para proceder con la instalación.</div>
+                    <div class="step"><strong>8. Estado de la Instalación:</strong> Indica el estado actual del proceso
+                        de
+                        instalación.</div>
+                    <div class="step"><strong>9. Aceptación de Términos:</strong> Marque esta casilla para aceptar los
+                        términos y condiciones.</div>
+                    <div class="step"><strong>10. Desinstalar Semilla:</strong> Botón para eliminar la instalación de la
+                        semilla del sistema.</div>
+                    <div class="step"><strong>11. Instalar Semilla:</strong> Botón para iniciar la instalación de la
+                        semilla
+                        en el equipo.</div>
+
+                    <div class="notice">
+                        <h3>⚠️Consideraciones Importantes</h3>
+
+                        Para garantizar el correcto funcionamiento de la semilla, **es obligatorio ejecutarla con
+                        privilegios de administrador**.
+                        Esto permite que el cliente pueda instalar los recursos necesarios y realizar las acciones
+                        requeridas sin restricciones del sistema operativo.
+                    </div>
+                    
+                </article>
+                <hr>
+                <article>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus in deserunt, repudiandae quam
+                    provident tempora beatae harum vero. Excepturi dolorum eaque deleniti sapiente dolor odit ipsa
+                    consectetur necessitatibus cupiditate. Sed.
+                </article>
+                <hr>
+                <article>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus in deserunt, repudiandae quam
+                    provident tempora beatae harum vero. Excepturi dolorum eaque deleniti sapiente dolor odit ipsa
+                    consectetur necessitatibus cupiditate. Sed.
+                </article>
+                <hr>
+                <article>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus in deserunt, repudiandae quam
+                    provident tempora beatae harum vero. Excepturi dolorum eaque deleniti sapiente dolor odit ipsa
+                    consectetur necessitatibus cupiditate. Sed.
+                </article>
+                <hr>
+                <article>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus in deserunt, repudiandae quam
+                    provident tempora beatae harum vero. Excepturi dolorum eaque deleniti sapiente dolor odit ipsa
+                    consectetur necessitatibus cupiditate. Sed.
+                </article>
+                <hr>
+                <article>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus in deserunt, repudiandae quam
+                    provident tempora beatae harum vero. Excepturi dolorum eaque deleniti sapiente dolor odit ipsa
+                    consectetur necessitatibus cupiditate. Sed.
+                </article>
+                <article>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus in deserunt, repudiandae quam
+                    provident tempora beatae harum vero. Excepturi dolorum eaque deleniti sapiente dolor odit ipsa
+                    consectetur necessitatibus cupiditate. Sed.
+                </article>
+                <article>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus in deserunt, repudiandae quam
+                    provident tempora beatae harum vero. Excepturi dolorum eaque deleniti sapiente dolor odit ipsa
+                    consectetur necessitatibus cupiditate. Sed.
+                </article>
+            </aside>
         </section>
     </main>
     <footer>
